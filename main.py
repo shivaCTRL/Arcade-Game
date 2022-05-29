@@ -18,7 +18,7 @@ WINNER_FONT =pygame.font.SysFont('ABC',100)
 
 
 GREY = (230,230,230)
-BLACK = (0,0,0)
+GRAY = (31,31,31)
 RED = (255,0,0)
 YELLOW = (255,255,0)
 BULLET_VEL = 7
@@ -35,13 +35,13 @@ left_spaceship = pygame.transform.rotate(pygame.transform.scale(left_spaceship_i
 right_spaceship_img = pygame.image.load(os.path.join('Assets','right_spaceship.png'))
 right_spaceship = pygame.transform.rotate(pygame.transform.scale(right_spaceship_img,(spaceship_width, spaceship_height)), 0)
 
-SPACE = pygame.transform.scale(pygame.image.load(os.path.join('Assets','space.jpg')),(width, height))
+SPACE = pygame.transform.scale(pygame.image.load(os.path.join('Assets','background.png')),(width, height))
 
 def draw_window(left, right,left_bullets,right_bullets,left_health,right_health):
     #BG color for window
         WIN.fill(GREY)
         WIN.blit(SPACE,(0,0))
-        pygame.draw.rect(WIN, BLACK, BORDER)
+        pygame.draw.rect(WIN, GRAY, BORDER)
 
         left_health_text =HEALTH_FONT.render('Health:'+str(left_health),1,GREY)
         right_health_text =HEALTH_FONT.render('Health:'+str(right_health),1,GREY)
@@ -157,10 +157,10 @@ def main():
         
         winner_text = ''
         if left_health <= 0 :
-                winner_text = 'RIGHT WON!!'
+                winner_text = 'RED WON!'
 
         if right_health <= 0 :
-                winner_text = 'LEFT WON!'
+                winner_text = 'YELLOW WON!'
 
         if winner_text != '':
                 draw_winner(winner_text)
